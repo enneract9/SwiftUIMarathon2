@@ -1,21 +1,29 @@
-//
-//  ContentView.swift
-//  SwiftUIMarathon2
-//
-//  Created by @_@ on 04.12.2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State var containerWidth: CGFloat = 300
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            container()
+            Slider(value: $containerWidth, in: 100...300)
         }
         .padding()
+    }
+    
+    private func container() -> some View {
+        Group {
+            Text("Марафон ")
+                .foregroundStyle(.secondary)
+            + Text("по SwiftUI ")
+                .bold()
+            + Text("«Отцовский пинок»")
+                .bold()
+                .foregroundStyle(.blue)
+                .font(.title)
+        }
+        .frame(width: containerWidth, height: 200)
+        .border(.red)
     }
 }
 
